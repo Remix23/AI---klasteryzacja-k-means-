@@ -19,14 +19,13 @@ namespace AI___klasteryzacja__k_means_
 
         public void Draw (Graphics g)
         {
-            g.DrawEllipse(Pens.Black, (int)Proto.X, (int)Proto.Y, (int)Proto.R, (int)Proto.R);
+            g.DrawEllipse(Pens.Black, Convert.ToInt32(Proto.X - Proto.R / 2), Convert.ToInt32(Proto.Y - Proto.R / 2), (int)Proto.R, (int)Proto.R);
         }
 
         public void Draw(Graphics g, Color color)
         {
             Brush brush = new SolidBrush(color);
-            g.FillEllipse(brush, (int)Proto.X, (int)Proto.Y, (int)Proto.R - 2, (int)Proto.R - 2);
+            g.FillEllipse(brush, Convert.ToInt32(Proto.X - Proto.R / 2), Convert.ToInt32(Proto.Y - Proto.R / 2), (int)Proto.R, (int)Proto.R);
         }
-
     }
 }

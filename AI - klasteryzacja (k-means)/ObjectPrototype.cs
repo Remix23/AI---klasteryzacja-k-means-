@@ -20,7 +20,7 @@ namespace AI___klasteryzacja__k_means_
 
         public static double Distance(ObjectPrototype f1, ObjectPrototype f2)
         {
-            return (f1.X + f2.X) * (f1.X +  f2.X) + (f1.Y - f2.Y) * (f1.Y - f2.Y);
+            return (f1.X - f2.X) * (f1.X - f2.X) + (f1.Y - f2.Y) * (f1.Y - f2.Y);
         }
     }
 }
