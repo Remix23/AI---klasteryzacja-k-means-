@@ -27,7 +27,7 @@ namespace AI___klasteryzacja__k_means_
             h = pictureBox1.Height;
 
             _numOfDataObjs = 10000;
-            _numOfCetroids = 100;
+            _numOfCetroids = 50;
             _objects = new List<DataObject>();
 
             _genDataObjs();
@@ -48,6 +48,14 @@ namespace AI___klasteryzacja__k_means_
         {
             kMeans.PairPointsAndCetroids();
             kMeans.UpdateCetroids();
+            pictureBox1.Invalidate();
+        }
+
+        private void button2_Click (object sender, EventArgs e)
+        {
+            _objects.Clear();
+            _genDataObjs();
+            this.kMeans.Reset();
             pictureBox1.Invalidate();
         }
 

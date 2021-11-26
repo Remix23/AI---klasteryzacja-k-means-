@@ -23,7 +23,7 @@ namespace AI___klasteryzacja__k_means_
         {
             _numOfCentroids = num_of_cetroids;
             _objects = objects;
-            _cetroidSize = 15;
+            _cetroidSize = 5;
             _centroids = new List<Centroid>();
             _objPrototypes = _objects.Select(x => x.Proto).ToList();
             _genCetroids();
@@ -45,18 +45,18 @@ namespace AI___klasteryzacja__k_means_
 
         public void PairPointsAndCetroids ()
         {
-            double distance, dis;
-            Centroid nearest_centroid;
             foreach (DataObject obj in _objects)
             {
-                distance = -1;
+                double distance, dis;
+                Centroid nearest_centroid;
                 if (_centroids.Count <= 0) continue;
                 nearest_centroid = _centroids[0];
+                distance = ObjectPrototype.Distance(obj.Proto, _centroids[0].Center);
                 for (int i = 1; i < _centroids.Count; i++)
                 {
                     dis = ObjectPrototype.Distance(obj.Proto, _centroids[i].Center);
 
-                    if (distance == -1 | dis < distance) 
+                    if (dis < distance) 
                     { 
                         nearest_centroid = _centroids[i];
                         distance = dis;
@@ -81,6 +81,12 @@ namespace AI___klasteryzacja__k_means_
                 PairPointsAndCetroids();
                 UpdateCetroids();
             }
+        }
+
+        public void Reset()
+        {
+            _centroids.Clear();
+            _genCetroids();
         }
 
         public void Draw (Graphics g)

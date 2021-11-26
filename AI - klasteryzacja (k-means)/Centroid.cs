@@ -28,22 +28,31 @@ namespace AI___klasteryzacja__k_means_
             if (_connectedObjects.Count == 0) return;
             double average_x = 0;
             double average_y = 0;
+            double average_r = 0;
             foreach (DataObject obj in _connectedObjects)
             {
                 average_x += obj.Proto.X;
                 average_y += obj.Proto.Y;
+                average_r += obj.Proto.R;
             }
             average_x /= _connectedObjects.Count;
             average_y /= _connectedObjects.Count;
+            average_r /= _connectedObjects.Count;
 
             Center.X = average_x;
             Center.Y = average_y;
+            Center.R = average_r;
 
         }
 
-        public void AddDataObj (DataObject obj)
+        public void AddDataObj(DataObject obj)
         {
             _connectedObjects.Add(obj);
+        }
+
+        public void Reset ()
+        {
+            _connectedObjects.Clear();
         }
         public void Draw (Graphics g)
         {
